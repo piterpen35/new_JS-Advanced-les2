@@ -1,0 +1,59 @@
+<div class="main-container">
+  <div class="forms-side">
+    <div class="login-input-container">
+      <p class="login-text">Login</p>
+      <input type="text" id="login-input" placeholder="Enter login" [(ngModel)]="userName">
+      <div class="errorLogin">
+        <p class="ivalidLoginText">Invalid Login </p>
+      </div>
+
+    </div>
+
+    <div class="password-input-container">
+      <p class="password-text">Password</p>
+      <input type="password" id="password-input" placeholder="Enter password" [(ngModel)]="userPassword">
+
+      <div class="errorPassword">
+        <p class="ivalidPasswordText">Invalid Password</p>
+      </div>
+
+    </div>
+
+    <div class="email-input-container">
+      <p class="email-text">Email address</p>
+      <input type="text" id="email-input" placeholder="Enter email" [(ngModel)]="userEmail">
+      <div class="errorEmail">
+        <p class="ivalidEmailText">Invalid Email</p>
+      </div>
+    </div>
+
+    <div>
+      <input *ngIf="!buttonHideShow" type="button" value="Add user" id="addUser-button" (click)="addUser()">
+      <input *ngIf="buttonHideShow" type="button" value="Save user" id="saveUser-button" (click)="saveUser()">
+    </div>
+  </div>
+
+  <div class="tables-side">
+    <table>
+      <div class="upper-line"></div>
+      <tr class="table-header">
+        <th class="no-width">#</th>
+        <th>Login</th>
+        <th>Password</th>
+        <th>Email</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      <tr *ngFor="let user of users; index as i">
+        <th class="no-width">{{ i+1 }}</th>
+        <th>{{ user.name }}</th>
+        <th>{{ user.password }}</th>
+        <th>{{ user.email }}</th>
+        <th><button id="editUserBtn" (click)="editUser(i)">Edit</button></th>
+        <th><button id="deleteUserBtn" (click)="deleteUser(i)">Delete</button></th>
+      </tr>
+      <div class="bottom-line"></div>
+
+    </table>
+  </div>
+</div>
